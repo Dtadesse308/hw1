@@ -10,6 +10,7 @@ struct Node
   /**
    * Initializing constructor
    */
+
   Node(int v, Node* n)
   {
     value = v;
