@@ -58,9 +58,9 @@ if (in == NULL){
       odds = newp;
     }
   }
-  
-  
-
+  delete in;
+  in = nullptr;
+ 
 }
 
 
