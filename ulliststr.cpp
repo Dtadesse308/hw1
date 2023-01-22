@@ -129,6 +129,7 @@ size_t ULListStr::size() const
       head_->val[head_->first] = "";
       head_->first++;
     }
+    size_--;
   }
   
   /**
