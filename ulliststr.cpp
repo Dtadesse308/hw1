@@ -65,14 +65,25 @@ size_t ULListStr::size() const
   void ULListStr::pop_back() {
     //if last element in tail;
     //do i need to make tail point at previous? or have empty node
+
+    if (head_ == tail_){
+      if (tail_->last == 1){
+        delete head_;
+        head_ = NULL;
+        tail_ = NULL;
+        return;
+      }
+    }
+   
     if (tail_->last == 1){
       Item* newp = tail_;
       tail_ = tail_->prev;
       delete newp;
+      tail_->next = NULL;
     }
     else if (tail_->last >= 1){
     tail_->val[(tail_->last)-1] = "";
-     tail_->last--;
+     tail_->last = 1;
     }
   size_--;
   }
@@ -161,7 +172,7 @@ size_t ULListStr::size() const
 
    Item* temp = head_;
 
-   for (int i = 0; i <= loc; i++){
+   for (int i = 0; i <= (int)loc; i++){
      if ((index >= 0) && (index < ARRSIZE ) ){
        return (&temp->val[index]);
      }
