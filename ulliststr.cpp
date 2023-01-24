@@ -71,6 +71,7 @@ size_t ULListStr::size() const
         delete head_;
         head_ = NULL;
         tail_ = NULL;
+        size_--;
         return;
       }
     }
@@ -81,9 +82,10 @@ size_t ULListStr::size() const
       delete newp;
       tail_->next = NULL;
     }
+    
     else if (tail_->last >= 1){
     tail_->val[(tail_->last)-1] = "";
-     tail_->last = 1;
+     tail_->last--;
     }
   size_--;
   }
