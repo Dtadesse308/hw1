@@ -16,54 +16,52 @@ using namespace std;
 
 /* Add a prototype for a helper function here if you need */
 
-void split(Node*& in, Node*& odds, Node*& evens)
+void split(Node *&in, Node *&odds, Node *&evens)
 {
-  /* Add code here */
-// WRITE YOUR CODE HERE
 
-if (in == NULL){
-  return;
-}
-
-  
-  split(in->next,odds,evens);
-
-  
-  if ( (in->value)%2 == 0){
-  
-    if (evens == nullptr){     
-       cout<<in->value<<endl;  
-   Node* newp = new Node((in->value),nullptr);   
-    evens = newp;      
-    }
-    else {
-      cout<<in->value<<endl;  
-      Node* newp = new Node((in->value),evens);     
-       evens = newp; 
-    }
-   
+  //base case
+  if (in == NULL)
+  {
+    return;
   }
-   else if ( (in->value)%2 != 0){
-    
-    if (odds == nullptr){   
-    cout<<in->value<<endl;  
-    Node* newp = new Node((in->value),nullptr);
-    odds = newp; 
 
-    
+  split(in->next, odds, evens);
+
+  //if even num
+  if ((in->value) % 2 == 0)
+  {
+    //if new, create new LL
+    if (evens == nullptr)
+    { 
+      Node *newp = new Node((in->value), nullptr);
+      evens = newp;
     }
-    else {
-     cout<<in->value<<endl;  
-      Node* newp = new Node((in->value),odds);
+    //if existing, add to LL
+    else
+    {
+      Node *newp = new Node((in->value), evens);
+      evens = newp;
+    }
+  }
+
+  //odd nums
+  else if ((in->value) % 2 != 0)
+  {
+     //if new, create new LL
+    if (odds == nullptr)
+    {
+      Node *newp = new Node((in->value), nullptr);
+      odds = newp;
+    }
+    else
+    {
+      //if existing, add to LL
+      Node *newp = new Node((in->value), odds);
       odds = newp;
     }
   }
   delete in;
   in = nullptr;
- 
 }
 
-
-
 /* If you needed a helper function, write it here */
-
