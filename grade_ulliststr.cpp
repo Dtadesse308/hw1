@@ -8,8 +8,7 @@
 #include <iostream>
 #include <sstream>
 
-typedef int Seed;
-
+// Generates a vector of random seeds
 std::vector<Seed> make_random_seed_vector(size_t numTrials, Seed origSeed)
 {
 		std::mt19937 randEngine;
@@ -23,6 +22,7 @@ std::vector<Seed> make_random_seed_vector(size_t numTrials, Seed origSeed)
 		return v;
 }
 
+// Creates a ULListStr and populates it with the given values
 ULListStr * makeList(std::vector<std::string> const & values, bool pushBack)
 {
 	// circular list is not copyable so we have to pass it by pointer
@@ -47,12 +47,13 @@ ULListStr * makeList(std::vector<std::string> const & values, bool pushBack)
 	return list;
 }
 
+// Overloaded function to create a ULListStr and populate it with the given values using push_back
 ULListStr * makeList(std::vector<std::string> const & values)
 {
     return makeList(values, true);
 }
 
-
+// Generates a vector of random alphanumeric strings
 std::vector<std::string> makeRandomAlphaStringVector(size_t count, Seed seed, size_t stringLength, bool allowDuplicates)
 {
 	// set up random number generator
@@ -95,6 +96,7 @@ std::vector<std::string> makeRandomAlphaStringVector(size_t count, Seed seed, si
 	return randomVector;
 }
 
+// Checks if the content of the list matches the expected values
 testing::AssertionResult checkListContent(ULListStr *const list, std::vector<std::string> const &expectedValues)
 {
 	if(list->size() != expectedValues.size())
@@ -123,6 +125,8 @@ testing::AssertionResult checkListContent(ULListStr *const list, std::vector<std
 
 	return testing::AssertionSuccess();
 }
+
+// Test cases for various functionalities of ULListStr
 
 TEST(ListInsertBack, OneItemAdd)
 {
@@ -635,3 +639,4 @@ int main(int argc, char* argv[]) {
   ::testing::InitGoogleTest(&argc,argv);
   return RUN_ALL_TESTS();
 }
+
